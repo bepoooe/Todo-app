@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoSphere - Smart Task Management</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Star on Github Button -->
+        <div class="github-star-container">
+            <a target="_blank" href="https://github.com/yourusername/todosphere">
+                <button class="glow-button">
+                    <i class="fas fa-star"></i>
+                    Star on Github
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </a>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="space-y-4">
+                <h1 class="font-black text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-center max-w-5xl mx-auto leading-tight">
+                    <span class="bg-gradient-to-r from-foreground via-foreground to-accent bg-clip-text text-transparent">ORGANIZE YOUR</span><br>
+                    <span class="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">TASKS WITH</span><br>
+                    <span class="bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text text-transparent">TODOSPHERE</span>
+                </h1>
+                <div class="max-w-2xl mx-auto space-y-3">
+                    <p class="text-xl md:text-2xl font-semibold subtitle-gradient">TodoSphere: Where every task counts</p>
+                    <p class="text-base md:text-lg text-muted-foreground leading-relaxed">Create, organize, and complete your tasks with our powerful and intuitive task management system.</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalTasks">0</span>
+                    <span class="stat-label">Total Tasks</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="completedTasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="pendingTasks">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Task Input Section -->
+            <section class="task-input-section">
+                <div class="input-card">
+                    <h2>Add New Task</h2>
+                    <form id="taskForm" class="task-form">
+                        <div class="form-group">
+                            <input type="text" id="taskInput" placeholder="What needs to be done?" required>
+                            <label for="taskInput">Task Description</label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <select id="taskPriority">
+                                    <option value="low">Low Priority</option>
+                                    <option value="medium" selected>Medium Priority</option>
+                                    <option value="high">High Priority</option>
+                                </select>
+                                <label for="taskPriority">Priority</label>
+                            </div>
+                            <div class="form-group">
+                                <select id="taskCategory">
+                                    <option value="personal">Personal</option>
+                                    <option value="work">Work</option>
+                                    <option value="shopping">Shopping</option>
+                                    <option value="health">Health</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <label for="taskCategory">Category</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="taskDueDate">
+                            <label for="taskDueDate">Due Date (Optional)</label>
+                        </div>
+                        <button type="submit" class="add-task-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Task
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i>
+                        All Tasks
+                    </button>
+                    <button class="filter-btn" data-filter="pending">
+                        <i class="fas fa-clock"></i>
+                        Pending
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check-circle"></i>
+                        Completed
+                    </button>
+                    <button class="filter-btn" data-filter="high">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        High Priority
+                    </button>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="searchInput" placeholder="Search tasks...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </section>
+
+            <!-- Tasks List Section -->
+            <section class="tasks-section">
+                <div class="tasks-header">
+                    <h2>Your Tasks</h2>
+                    <button id="clearCompleted" class="clear-btn">
+                        <i class="fas fa-trash"></i>
+                        Clear Completed
+                    </button>
+                </div>
+                <div class="tasks-container" id="tasksContainer">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>No tasks yet!</h3>
+                    <p>Add your first task to get started on your productivity journey.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 TodoSphere. Built by bepoooe</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
