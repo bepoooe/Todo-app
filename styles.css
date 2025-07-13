@@ -170,6 +170,10 @@ body {
 /* Typography Classes */
 .font-black {
     font-weight: 900;
+    -webkit-text-stroke: 0.3px currentColor;
+    letter-spacing: -0.025em;
+    font-variation-settings: 'wght' 900;
+    text-shadow: 0 0 1px currentColor;
 }
 
 .font-semibold {
@@ -1046,6 +1050,526 @@ body {
     margin-top: 3rem;
 }
 
+/* Advanced Features Styles */
+
+/* Checkbox Group */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+    padding: 16px 20px;
+    background: rgba(26, 26, 26, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.checkbox-group:hover {
+    background: rgba(26, 26, 26, 0.9);
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.1);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--foreground);
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: static;
+    background: none;
+    padding: 0;
+    transition: color 0.3s ease;
+    flex: 1;
+}
+
+.checkbox-label:hover {
+    color: var(--primary);
+}
+
+.checkbox-label i {
+    color: var(--primary);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.3);
+}
+
+.checkbox-group:hover .checkbox-label i {
+    color: var(--accent);
+    transform: scale(1.05);
+    text-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    order: 2;
+    backdrop-filter: blur(5px);
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.4),
+                0 0 5px rgba(220, 38, 38, 0.2);
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.checkbox-group input[type="checkbox"]:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.25);
+    transform: scale(1.05);
+}
+
+/* Drag and Drop Styles */
+.task-item {
+    cursor: grab;
+    transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.task-item:active {
+    cursor: grabbing;
+}
+
+.task-item.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+    z-index: 1000;
+}
+
+.task-item.drag-over {
+    border: 2px dashed var(--primary);
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.drop-zone {
+    min-height: 60px;
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-foreground);
+    font-style: italic;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.drop-zone.active {
+    border-color: var(--primary);
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary);
+}
+
+/* Sub-tasks Styles */
+.task-subtasks {
+    margin-top: 15px;
+    margin-left: 40px;
+    border-left: 2px solid var(--border);
+    padding-left: 15px;
+}
+
+.subtask-item {
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.subtask-checkbox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    background: var(--input);
+    transition: all 0.3s ease;
+}
+
+.subtask-checkbox.checked {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.subtask-checkbox.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.subtask-text {
+    flex: 1;
+    color: var(--foreground);
+}
+
+.subtask-text.completed {
+    text-decoration: line-through;
+    color: var(--muted-foreground);
+}
+
+.add-subtask-btn {
+    background: none;
+    border: 1px dashed var(--border);
+    color: var(--muted-foreground);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.add-subtask-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Tags Styles */
+.task-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.task-tag {
+    background: rgba(220, 38, 38, 0.2);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.task-tag .remove-tag {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.task-tag .remove-tag:hover {
+    opacity: 1;
+    color: var(--error);
+}
+
+/* Recurrence Indicator */
+.task-recurrence {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.task-recurrence i {
+    font-size: 0.7rem;
+}
+
+/* Reminder Indicator */
+.task-reminder {
+    color: #f59e0b;
+    font-size: 0.8rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes reminderPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+.task-reminder.active {
+    animation: reminderPulse 2s infinite;
+}
+
+/* Task Actions Enhancement */
+.task-actions {
+    display: flex;
+    gap: 8px;
+    position: relative;
+}
+
+.task-action-btn.subtask {
+    color: var(--primary);
+}
+
+.task-action-btn.subtask:hover {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--accent);
+}
+
+/* Notification Permission */
+.notification-permission {
+    background: var(--card);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--foreground);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(220, 38, 38, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.notification-permission::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(220, 38, 38, 0.08) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.notification-permission:hover {
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2),
+                0 0 30px rgba(220, 38, 38, 0.15);
+    transform: translateY(-2px);
+}
+
+.notification-permission > * {
+    position: relative;
+    z-index: 1;
+}
+
+.notification-permission.hidden {
+    display: none;
+}
+
+.notification-permission i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    animation: enhancedGlow 3s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+}
+
+@keyframes enhancedGlow {
+    0%, 100% { 
+        opacity: 1;
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+    }
+    50% { 
+        opacity: 0.9;
+        transform: scale(1.08);
+        text-shadow: 0 0 20px rgba(220, 38, 38, 0.8),
+                     0 0 30px rgba(220, 38, 38, 0.4);
+    }
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-content h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--foreground);
+    background: linear-gradient(45deg, var(--foreground), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+.notification-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--muted-foreground);
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.notification-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.notification-btn {
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    color: white;
+    border: 2px solid var(--glow-color);
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.4),
+                0 0 25px rgba(220, 38, 38, 0.2),
+                inset 0 0 10px rgba(220, 38, 38, 0.1);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.notification-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.notification-btn:hover::before {
+    left: 100%;
+}
+
+.notification-btn:hover {
+    background: linear-gradient(45deg, var(--accent), var(--primary));
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.6),
+                0 0 35px rgba(220, 38, 38, 0.3),
+                0 8px 25px rgba(220, 38, 38, 0.4);
+    border-color: var(--enhanced-glow-color);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+.notification-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.5),
+                0 0 25px rgba(220, 38, 38, 0.2);
+}
+
+.notification-btn i {
+    font-size: 0.9rem;
+    color: white;
+    animation: none;
+}
+
+.notification-close {
+    background: transparent;
+    border: none;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    width: auto;
+    height: auto;
+    backdrop-filter: none;
+    position: relative;
+    overflow: visible;
+    font-size: 1.2rem;
+}
+
+.notification-close::before {
+    display: none;
+}
+
+.notification-close:hover {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    transform: scale(1.2);
+    box-shadow: none;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.6);
+}
+
+.notification-close:hover::before {
+    display: none;
+}
+
+.notification-close:active {
+    transform: scale(1.1);
+    box-shadow: none;
+}
+
+/* Progress Indicator for Subtasks */
+.subtask-progress {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
@@ -1195,6 +1719,110 @@ body {
     }
 }
 
+/* Mobile Responsive Styles for Advanced Features */
+@media (max-width: 768px) {
+    .checkbox-group {
+        padding: 14px 18px;
+        gap: 10px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .checkbox-label {
+        font-size: 0.9rem;
+    }
+    
+    .checkbox-label i {
+        font-size: 1rem;
+    }
+    
+    .notification-permission {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+    }
+    
+    .notification-permission i {
+        font-size: 2.2rem;
+    }
+    
+    .notification-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .notification-content p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .notification-actions {
+        justify-content: flex-start;
+        gap: 14px;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 4px;
+        padding-left: 15px;
+    }
+    
+    .notification-btn {
+        padding: 12px 22px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+    
+    .notification-close {
+        width: auto;
+        height: auto;
+        padding: 6px;
+        font-size: 1.1rem;
+    }
+    
+    .task-tags {
+        gap: 4px;
+    }
+    
+    .task-tag {
+        font-size: 0.65rem;
+        padding: 1px 6px;
+    }
+    
+    .task-subtasks {
+        margin-left: 20px;
+        padding-left: 10px;
+    }
+    
+    .subtask-item {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .add-subtask-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+    
+    .task-recurrence {
+        font-size: 0.7rem;
+    }
+    
+    .subtask-progress {
+        font-size: 0.75rem;
+        gap: 6px;
+    }
+    
+    .progress-bar {
+        height: 3px;
+    }
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 10px;
@@ -1334,5 +1962,59 @@ body {
     
     .toast.show {
         transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive Styles for Checkbox and Notification */
+@media (max-width: 480px) {    
+    .checkbox-group {
+        padding: 12px 16px;
+        gap: 8px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .checkbox-label {
+        font-size: 0.85rem;
+    }
+    
+    .checkbox-label i {
+        font-size: 0.95rem;
+    }
+    
+    .notification-permission {
+        padding: 18px;
+        gap: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .notification-permission i {
+        font-size: 1.8rem;
+    }
+    
+    .notification-content h3 {
+        font-size: 1rem;
+    }
+    
+    .notification-content p {
+        font-size: 0.8rem;
+    }
+    
+    .notification-btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        border-radius: 10px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+    }
+    
+    .notification-close {
+        width: auto;
+        height: auto;
+        padding: 5px;
+        font-size: 1rem;
     }
 }

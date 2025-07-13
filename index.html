@@ -9,7 +9,7 @@
     <title>TodoSphere - Smart Task Management</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -31,7 +31,7 @@
                 <h1 class="font-black text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-center max-w-5xl mx-auto leading-tight">
                     <span class="bg-gradient-to-r from-foreground via-foreground to-accent bg-clip-text text-transparent">ORGANIZE YOUR</span><br>
                     <span class="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">TASKS WITH</span><br>
-                    <span class="bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text text-transparent">TODOSPHERE</span>
+                    <span class="bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text text-transparent">TODOSPHERE!</span>
                 </h1>
                 <div class="max-w-2xl mx-auto space-y-3">
                     <p class="text-xl md:text-2xl font-semibold subtitle-gradient">TodoSphere: Where every task counts</p>
@@ -86,8 +86,33 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="date" id="taskDueDate">
-                            <label for="taskDueDate">Due Date (Optional)</label>
+                            <input type="text" id="taskTags" placeholder="work, important, urgent">
+                            <label for="taskTags">Tags (comma separated)</label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="date" id="taskDueDate">
+                                <label for="taskDueDate">Due Date (Optional)</label>
+                            </div>
+                            <div class="form-group">
+                                <select id="taskRecurrence">
+                                    <option value="none">No Repeat</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="yearly">Yearly</option>
+                                </select>
+                                <label for="taskRecurrence">Repeat</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="taskReminder">
+                                <label for="taskReminder" class="checkbox-label">
+                                    <i class="fas fa-bell"></i>
+                                    Enable reminders for this task
+                                </label>
+                            </div>
                         </div>
                         <button type="submit" class="add-task-btn">
                             <i class="fas fa-plus"></i>
