@@ -1059,7 +1059,7 @@ body {
     justify-content: space-between;
     gap: 12px;
     margin-top: 8px;
-    padding: 16px 20px;
+    padding: 14px 18px;
     background: rgba(26, 26, 26, 0.6);
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -1076,10 +1076,10 @@ body {
 .checkbox-label {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     cursor: pointer;
     color: var(--foreground);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
     position: static;
     background: none;
@@ -2170,42 +2170,65 @@ body {
     .filter-section {
         flex-direction: column;
         align-items: stretch;
-        gap: 14px;
+        gap: 16px;
         padding: 18px 16px;
     }
     
     .filter-controls {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 8px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        width: 100%;
     }
     
     .filter-btn {
-        flex: 1;
-        min-width: calc(50% - 4px);
-        padding: 10px 14px;
-        font-size: 0.82rem;
+        padding: 12px 16px;
+        font-size: 0.85rem;
         text-align: center;
-        border-radius: 20px;
+        border-radius: 12px;
         white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 48px;
+    }
+    
+    .filter-btn i {
+        font-size: 0.9rem;
     }
     
     .search-group {
         width: 100%;
-        margin-top: 4px;
+        margin-top: 8px;
+        position: relative;
     }
     
     .search-group input {
         width: 100%;
         font-size: 16px; /* Prevents zoom on iOS */
-        padding: 12px 40px 12px 16px;
-        border-radius: 20px;
-        min-height: 46px;
+        padding: 14px 44px 14px 16px;
+        border-radius: 12px;
+        min-height: 48px;
+        border: 2px solid var(--border);
+        background: var(--input);
+        color: var(--foreground);
+        transition: all 0.3s ease;
+    }
+    
+    .search-group input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
     }
     
     .search-group i {
-        right: 12px;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted-foreground);
         font-size: 1rem;
+        pointer-events: none;
     }
     
     /* Task Items */
@@ -2407,7 +2430,7 @@ body {
     }
     
     .toast-message {
-        font-size: 0.85rem;
+        font-size:  0.85rem;
     }
     
     /* Empty State */
@@ -2432,8 +2455,10 @@ body {
     
     /* Checkbox Groups */
     .checkbox-group {
-        padding: 12px 16px;
-        gap: 10px;
+        padding: 12px 14px;
+        gap: 8px;
+        margin-top: 6px;
+        border-radius: 10px;
     }
     
     .checkbox-group input[type="checkbox"] {
@@ -2442,11 +2467,12 @@ body {
     }
     
     .checkbox-label {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        gap: 6px;
     }
     
     .checkbox-label i {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -2497,7 +2523,6 @@ body {
     
     .stat-number {
         font-size: 1.6rem;
-        margin-bottom: 2px;
     }
     
     .stat-label {
@@ -2545,25 +2570,41 @@ body {
     /* Filters */
     .filter-section {
         padding: 16px 12px;
-        gap: 12px;
+        gap: 14px;
+    }
+    
+    .filter-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
     }
     
     .filter-btn {
-        padding: 8px 12px;
+        padding: 10px 12px;
         font-size: 0.8rem;
-        min-width: calc(50% - 3px);
-        border-radius: 18px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-height: 44px;
+        text-align: center;
+    }
+    
+    .filter-btn i {
+        font-size: 0.85rem;
     }
     
     .search-group input {
-        padding: 10px 35px 10px 14px;
+        padding: 12px 40px 12px 14px;
         font-size: 16px; /* Prevents zoom on iOS */
-        min-height: 42px;
-        border-radius: 18px;
+        min-height: 44px;
+        border-radius: 10px;
     }
     
     .search-group i {
-        right: 10px;
+        right: 12px;
         font-size: 0.9rem;
     }
     
@@ -2752,8 +2793,10 @@ body {
     
     /* Checkbox Groups */
     .checkbox-group {
-        padding: 10px 14px;
-        gap: 8px;
+        padding: 10px 12px;
+        gap: 6px;
+        margin-top: 4px;
+        border-radius: 8px;
     }
     
     .checkbox-group input[type="checkbox"] {
@@ -2762,239 +2805,84 @@ body {
     }
     
     .checkbox-label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        gap: 5px;
     }
     
     .checkbox-label i {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 }
 
-/* Extra Small Mobile - 360px and below */
-@media (max-width: 360px) {
-    /* Ultra compact for very small screens */
-    .container {
-        padding: 6px;
-    }
-    
-    .header {
-        padding: 16px 8px;
-        margin-bottom: 12px;
-    }
-    
-    .text-4xl {
-        font-size: 1.3rem;
-        line-height: 1.6rem;
-    }
-    
-    .glow-button {
-        padding: 0.5em 1em;
-        font-size: 11px;
-        gap: 0.2rem;
-    }
-    
-    .header-stats {
-        gap: 12px;
-        margin-top: 1rem;
-    }
-    
-    .stat-number {
-        font-size: 1.4rem;
-    }
-    
-    .stat-label {
-        font-size: 0.7rem;
-    }
-    
-    .task-input-section, 
-    .filter-section, 
-    .tasks-section {
-        padding: 14px 10px;
-        margin-bottom: 10px;
-        border-radius: 14px;
-    }
-    
-    .input-card h2, 
-    .tasks-header h2 {
-        font-size: 1.25rem;
-        margin-bottom: 14px;
-    }
-    
-    .form-group input,
-    .form-group select {
-        padding: 10px 12px;
-        min-height: 44px;
-    }
-    
-    .add-task-btn {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-        min-height: 44px;
-    }
-    
-    .filter-btn {
-        padding: 6px 10px;
-        font-size: 0.75rem;
-        border-radius: 16px;
-    }
-    
-    .search-group input {
-        padding: 8px 32px 8px 12px;
-        min-height: 38px;
-        border-radius: 16px;
-    }
-    
-    .task-item-info {
-        padding: 12px;
+/* Special handling for very small screens */
+@media (max-width: 320px) {
+    .filter-controls {
+        grid-template-columns: 1fr;
         gap: 8px;
     }
     
-    .task-text {
-        font-size: 0.88rem;
-    }
-    
-    .task-action-btn {
-        min-width: 26px;
-        min-height: 26px;
-        padding: 4px;
+    .filter-btn {
+        width: 100%;
+        padding: 10px 12px;
         font-size: 0.8rem;
+        min-height: 44px;
+    }
+    
+    .filter-btn i {
+        margin-right: 6px;
+    }
+    
+    /* Checkbox Groups for very small screens */
+    .checkbox-group {
+        padding: 8px 10px;
+        gap: 6px;
+        margin-top: 3px;
+        border-radius: 6px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .checkbox-label {
+        font-size: 0.75rem;
+        gap: 4px;
+    }
+    
+    .checkbox-label i {
+        font-size: 0.75rem;
     }
 }
 
-/* Touch and Interaction Improvements */
-@media (hover: none) and (pointer: coarse) {
-    /* Touch-friendly adjustments */
-    .task-action-btn,
-    .filter-btn,
-    .add-task-btn,
-    .clear-btn,
-    .notification-btn {
-        min-height: 44px; /* Apple's recommended touch target size */
-        min-width: 44px;
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    .filter-section {
+        padding: 12px 16px;
+        gap: 12px;
     }
     
-    .task-checkbox,
-    .subtask-checkbox {
-        min-width: 24px;
-        min-height: 24px;
+    .filter-controls {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
     }
     
-    .form-group input,
-    .form-group select,
+    .filter-btn {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+        min-height: 40px;
+    }
+    
+    .filter-btn span {
+        display: none; /* Hide text labels in landscape on short screens */
+    }
+    
+    .search-group {
+        margin-top: 4px;
+    }
+    
     .search-group input {
-        min-height: 48px; /* Comfortable touch target */
-    }
-    
-    /* Reduce hover effects on touch devices */
-    .task-item:hover .task-item-info,
-    .filter-btn:hover,
-    .task-action-btn:hover {
-        transform: none;
-    }
-}
-
-/* Landscape Mobile Optimization */
-@media (max-width: 768px) and (orientation: landscape) {
-    .header {
-        padding: 16px 15px;
-        margin-bottom: 16px;
-    }
-    
-    .text-4xl {
-        font-size: 1.6rem;
-        line-height: 1.8rem;
-    }
-    
-    .header-stats {
-        gap: 30px;
-        margin-top: 1rem;
-    }
-    
-    .task-input-section, 
-    .filter-section, 
-    .tasks-section {
-        padding: 18px 16px;
-        margin-bottom: 14px;
-    }
-    
-    .subtask-modal-content {
-        max-height: 80vh; /* More space in landscape */
-    }
-}
-
-/* Print Styles for Mobile */
-@media print {
-    .github-star-container,
-    .filter-section,
-    .task-actions,
-    .notification-permission,
-    .toast,
-    .subtask-modal {
-        display: none !important;
-    }
-    
-    .container {
-        padding: 0;
-        max-width: 100%;
-    }
-    
-    .task-item,
-    .task-item-info {
-        background: white !important;
-        color: black !important;
-        border: 1px solid #ccc !important;
-        box-shadow: none !important;
-    }
-    
-    .task-text {
-        color: black !important;
-    }
-}
-
-/* Accessibility Enhancements for Mobile */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    
-    .glow-button::after,
-    .task-item::before,
-    .task-item::after {
-        display: none;
-    }
-}
-
-/* High Contrast Mode Support */
-@media (prefers-contrast: high) {
-    :root {
-        --border: #ffffff;
-        --muted-foreground: #ffffff;
-        --primary: #ff0000;
-        --accent: #ff4444;
-    }
-    
-    .task-item,
-    .form-group input,
-    .filter-btn,
-    .search-group input {
-        border-width: 2px !important;
-    }
-}
-
-/* Dark Mode Enhancements for Mobile */
-@media (prefers-color-scheme: dark) {
-    /* Additional dark mode optimizations for mobile */
-    .task-input-section,
-    .filter-section,
-    .tasks-section {
-        background: rgba(26, 26, 26, 0.95);
-        backdrop-filter: blur(10px);
-    }
-    
-    .form-group input,
-    .search-group input {
-        background: rgba(38, 38, 38, 0.9);
+        min-height: 40px;
+        padding: 8px 36px 8px 12px;
     }
 }
