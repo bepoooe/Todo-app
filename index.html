@@ -184,6 +184,54 @@
         </div>
     </div>
 
+    <!-- Subtask Modal -->
+    <div id="subtaskModal" class="subtask-modal">
+        <div class="subtask-modal-content">
+            <div class="subtask-modal-header">
+                <h3 class="subtask-modal-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Add Subtask
+                </h3>
+                <button class="subtask-modal-close" onclick="todoApp.closeSubtaskModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="subtask-parent-info">
+                <i class="fas fa-tasks"></i>
+                <div>
+                    <div class="subtask-parent-label">Adding subtask to:</div>
+                    <div class="subtask-parent-text" id="parentTaskText">Task name will appear here</div>
+                </div>
+            </div>
+            
+            <form class="subtask-form" id="subtaskForm">
+                <div class="subtask-input-group">
+                    <label for="subtaskInput">Subtask</label>
+                    <input 
+                        type="text" 
+                        id="subtaskInput" 
+                        class="subtask-input" 
+                        placeholder="Enter your subtask description..."
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <div class="subtask-form-actions">
+                    <button type="button" class="subtask-btn subtask-btn-secondary" onclick="todoApp.closeSubtaskModal()">
+                        <i class="fas fa-times"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" class="subtask-btn subtask-btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Add Subtask
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

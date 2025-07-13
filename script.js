@@ -6,6 +6,7 @@ class TodoApp {
         this.searchQuery = '';
         this.draggedTask = null;
         this.notificationPermission = false;
+        this.currentSubtaskParentId = null;
         this.init();
     }
 
@@ -445,10 +446,72 @@ class TodoApp {
     }
 
     promptSubtask(parentId) {
-        const subtaskText = prompt('Enter subtask:');
-        if (subtaskText) {
-            this.addSubtask(parentId, subtaskText);
-        }
+        this.showSubtaskModal(parentId);
+    }
+
+    showSubtaskModal(parentId) {
+        const parentTask = this.tasks.find(task => task.id === parentId);
+        if (!parentTask) return;
+
+        // Store the parent task ID for later use
+        this.currentSubtaskParentId = parentId;
+
+        // Update the modal with parent task info
+        document.getElementById('parentTaskText').textContent = parentTask.text;
+        
+        // Clear and setup the input
+        const subtaskInput = document.getElementById('subtaskInput');
+        const submitBtn = document.querySelector('.subtask-btn-primary');
+        
+        subtaskInput.value = '';
+        submitBtn.disabled = true;
+        
+        // Add input validation
+        subtaskInput.addEventListener('input', () => {
+            const hasValue = subtaskInput.value.trim().length > 0;
+            submitBtn.disabled = !hasValue;
+        });
+        
+        // Show the modal with animation
+        const modal = document.getElementById('subtaskModal');
+        modal.style.display = 'flex';
+        
+        // Trigger animation
+        requestAnimationFrame(() => {
+            modal.classList.add('show');
+        });
+        
+        // Focus the input after animation
+        setTimeout(() => {
+            subtaskInput.focus();
+        }, 300);
+
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeSubtaskModal() {
+        const modal = document.getElementById('subtaskModal');
+        modal.classList.remove('show');
+        
+        // Hide modal after animation
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+        
+        this.currentSubtaskParentId = null;
+    }
+
+    handleSubtaskSubmit() {
+        const subtaskInput = document.getElementById('subtaskInput');
+        const subtaskText = subtaskInput.value.trim();
+        
+        if (!subtaskText || !this.currentSubtaskParentId) return;
+
+        this.addSubtask(this.currentSubtaskParentId, subtaskText);
+        this.closeSubtaskModal();
+        this.showToast('Subtask added successfully!', 'success');
     }
 
     // Event Binding
@@ -457,6 +520,12 @@ class TodoApp {
         document.getElementById('taskForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.addTask();
+        });
+
+        // Subtask form submission
+        document.getElementById('subtaskForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleSubtaskSubmit();
         });
 
         // Filter buttons
@@ -475,6 +544,23 @@ class TodoApp {
         // Clear completed tasks
         document.getElementById('clearCompleted').addEventListener('click', () => {
             this.clearCompletedTasks();
+        });
+
+        // Modal keyboard events
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('subtaskModal');
+            if (modal.classList.contains('show')) {
+                if (e.key === 'Escape') {
+                    this.closeSubtaskModal();
+                }
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('subtaskModal').addEventListener('click', (e) => {
+            if (e.target.id === 'subtaskModal') {
+                this.closeSubtaskModal();
+            }
         });
     }
 
