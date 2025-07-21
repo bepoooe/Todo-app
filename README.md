@@ -4,17 +4,17 @@ A modern, responsive todo application with a sleek dark theme and advanced task 
 
 ## Features
 
-- ✨ **Modern UI/UX** - Dark theme with glassmorphism effects and red accents
-- 📱 **Fully Responsive** - Optimized for desktop, tablet, and mobile devices
-- 🎯 **Task Management** - Create, edit, delete, and organize tasks
-- 🏷️ **Priority Levels** - High, Medium, and Low priority categorization
-- 📂 **Categories** - Organize tasks with custom categories
-- 📅 **Due Dates** - Set and track task deadlines
-- 🔍 **Search & Filter** - Find tasks quickly with search and filter options
-- ✅ **Subtasks** - Break down complex tasks into smaller steps
-- 🔔 **Reminders** - Enable notifications for important tasks
-- 🎨 **Drag & Drop** - Reorder tasks with intuitive drag and drop
-- 💾 **Local Storage** - Your tasks are saved locally in your browser
+- **Modern UI/UX** - Dark theme with glassmorphism effects and red accents
+- **Fully Responsive** - Optimized for desktop, tablet, and mobile devices
+- **Task Management** - Create, edit, delete, and organize tasks
+- **Priority Levels** - High, Medium, and Low priority categorization
+- **Categories** - Organize tasks with custom categories
+- **Due Dates** - Set and track task deadlines
+- **Search & Filter** - Find tasks quickly with search and filter options
+- **Subtasks** - Break down complex tasks into smaller steps
+- **Reminders** - Enable notifications for important tasks
+- **Drag & Drop** - Reorder tasks with intuitive drag and drop
+- **Local Storage** - Your tasks are saved locally in your browser
 
 ## Technologies Used
 
@@ -43,11 +43,11 @@ Todo app/
 
 ## Browser Support
 
-- ✅ Chrome (recommended)
-- ✅ Firefox
-- ✅ Safari
-- ✅ Edge
-- 📱 Mobile browsers
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+- Mobile browsers
 
 ## Features Overview
 
