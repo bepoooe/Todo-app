@@ -1,4 +1,4 @@
-# TodoSphere 
+# TodoSphere  
 
 A modern, responsive todo application with a sleek dark theme and advanced task management features.
 
